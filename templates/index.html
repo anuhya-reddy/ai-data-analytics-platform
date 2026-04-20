@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Sales Analytics</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <h1>AI Sales Analytics</h1>
+        <p>Ask anything about your sales data</p>
+    </header>
+    <!-- TOGGLE BUTTONS -->
+<div class="toggle-container">
+    <button id="fileBtn" class="toggle-btn active" onclick="showSection('file')">
+        📁 File Upload
+    </button>
+
+    <button id="dbBtn" class="toggle-btn" onclick="showSection('db')">
+        🗄️ Database
+    </button>
+</div>
+
+<!-- FILE SECTION -->
+<div id="fileSection">
+    <div class="upload-container">
+        <input type="file" id="fileInput">
+        <button onclick="uploadFile()">Upload Excel</button>
+    </div>
+</div>
+
+<!-- DATABASE SECTION -->
+<div id="dbSection" style="display: none;">
+    <div class="card">
+        <div class="card-header">
+            <h3>Connect Database</h3>
+        </div>
+
+        <div class="db-container">
+            <input id="dbHost" placeholder="Host">
+            <input id="dbUser" placeholder="User">
+            <input id="dbPass" type="password" placeholder="Password">
+            <input id="dbName" placeholder="Database">
+            <input id="dbTable" placeholder="Table">
+
+            <button onclick="connectDB()">Connect</button>
+        </div>
+    </div>
+</div>
+
+    <div class="search-container">
+        <input id="question" type="text" placeholder="Ask a question (e.g., Top 5 brands)">
+        <button onclick="ask()">Ask</button>
+    </div>
+
+    <div class="kpi-container">
+        <div class="kpi-card">
+            <span>Total Sales</span>
+            <h2 id="totalSales">₹ -</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Top Result</span>
+            <h2 id="topItem">-</h2>
+        </div>
+
+        <div class="kpi-card">
+            <span>Entries</span>
+            <h2 id="totalCount">-</h2>
+        </div>
+    </div>
+
+    <div class="main-grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Results</h3>
+            </div>
+            <div class="table-wrapper">
+                <table id="resultTable"></table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Visualization</h3>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+    </div>
+
+    <div class="card insights-card">
+        <div class="card-header">
+            <h3>AI Insights</h3>
+        </div>
+        <div id="insightsBox" class="insights-text">
+            Ask a question to generate insights...
+        </div>
+    </div>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>
